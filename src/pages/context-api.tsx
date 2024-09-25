@@ -7,9 +7,10 @@
  * - Disparar as mensagens a partir dos botões abaixo
  */
 
-import styles from '@/styles/context-api.module.css';
 import { IToastMessage } from '@/types/toast-message';
 import { ToastMessage } from '@/components/ToastMessage';
+
+import styles from '@/styles/context-api.module.css';
 
 export default function ContextApi() {
 	const messages: Array<IToastMessage> = [

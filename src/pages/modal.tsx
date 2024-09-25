@@ -5,9 +5,9 @@
  */
 
 import { useState } from 'react';
+import { Modal } from '@/components/Modal';
 
 import styles from '@/styles/modal.module.css';
-import { Modal } from '@/components/Modal';
 
 export default function Home() {
 	const [modalIsOpen, setModalIsOpen] = useState(false);

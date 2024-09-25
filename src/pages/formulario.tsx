@@ -8,9 +8,9 @@
  * - Ao dar 'submit', deve ser feito uma request para /api/users/create
  * - Lide com os possíveis erros
  */
+import { useForm, SubmitHandler } from 'react-hook-form';
 
 import styles from '@/styles/formulario.module.css';
-import { useForm, SubmitHandler } from 'react-hook-form';
 
 interface IFormData extends FormData {
 	name: string;

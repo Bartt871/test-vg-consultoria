@@ -7,9 +7,9 @@
  */
 
 import { useEffect, useState } from 'react';
+import { IUser } from '@/types/user';
 
 import styles from '@/styles/lista.module.css';
-import { IUser } from '@/types/user';
 
 export default function Lista() {
 	const [users, setUsers] = useState<Array<IUser>>([]);

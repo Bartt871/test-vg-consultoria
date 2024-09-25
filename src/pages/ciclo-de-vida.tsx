@@ -16,10 +16,10 @@
  */
 
 import { GetServerSideProps } from 'next/types';
-
-import styles from '@/styles/ciclo-de-vida.module.css';
 import { Counter } from '@/components/Counter';
 import { useEffect, useState } from 'react';
+
+import styles from '@/styles/ciclo-de-vida.module.css';
 
 type CicloDeVidaProps = {
 	initialCount: number;

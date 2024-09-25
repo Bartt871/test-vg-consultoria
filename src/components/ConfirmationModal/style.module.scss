@@ -1,0 +1,58 @@
+$danger: #e63946;
+$success: #4caf50;
+
+$colors: (
+    success: $success,
+    danger: $danger
+);
+
+.content {
+    font-weight: 600;
+    font-style: italic;
+    margin-bottom: .5rem;
+    text-align: center;
+}
+
+.custom_footer {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0px, 1fr));
+    padding: .5rem;
+
+    & button {
+        border-radius: 4px;
+        border: 1px solid;
+        color: white;
+        font-weight: 600;
+        font-size: 12px;
+        padding: .3rem;
+        transition: background-color .2s, border-color .2s;
+
+        @each $colorName, $hex in $colors {
+            $darkenTenPercent: darken($hex, 10%);
+
+            &:hover.--#{$colorName} {
+                background-color: $darkenTenPercent;
+                border-color: darken($hex, 20%);
+            }
+
+            &.--#{$colorName} {
+                background-color: $hex;
+                border-color: $darkenTenPercent;
+            }
+        }
+    }
+
+    & .--cancel {
+        grid-column: 1 / 4 span;
+    }
+
+    & .--confirm {
+        grid-column: 9 / 4 span;
+    }
+
+    @media screen and (max-width: 720px) {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+    }
+}
