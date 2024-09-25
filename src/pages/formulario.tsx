@@ -19,7 +19,7 @@ interface IFormData extends FormData {
 
 export default function Form() {
 
-	const { register, handleSubmit, formState: { errors } } = useForm<IFormData>();
+	const { register, handleSubmit, reset, formState: { errors } } = useForm<IFormData>();
 
 	const onSubmit: SubmitHandler<FormData> = async (data) => {
 		try {
@@ -34,6 +34,7 @@ export default function Form() {
 			}
 
 			alert('Usuário registrado com sucesso!');
+			reset();
 		} catch (error) {
 			alert(error);
 		}
