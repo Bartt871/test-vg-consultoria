@@ -35,30 +35,32 @@ export const Modal: React.FC<ModalProps> = ({ children, title, isOpen, ...props 
 	if (!isOpen) return null;
 
 	return (
-		<div data-modal-wrapper className={styles.wrapper} onClick={handleCloseClick} onKeyDown={handleKeyDown}>
-			<div data-modal-container>
-				<header data-modal-header>
-					<h2>{title}</h2>
+		<>
+			<div data-modal-wrapper className={styles.wrapper} onClick={handleCloseClick} onKeyDown={handleKeyDown}>
+				<div data-modal-container onClick={(e) => e.stopPropagation()}>
+					<header data-modal-header>
+						<h2>{title}</h2>
 
-					<button data-modal-close onClick={handleCloseClick}>
-						X
-					</button>
-				</header>
-
-				{children}
-
-				{!props.footer?.hidden && (
-					<div data-modal-footer>
-						<button data-modal-cancel onClick={handleCloseClick}>
-							{props.footer?.cancelText ?? 'Cancelar'}
+						<button data-modal-close onClick={handleCloseClick}>
+							X
 						</button>
+					</header>
 
-						<button data-modal-confirm onClick={handleConfirmClick} data-type="confirm">
-							{props.footer?.confirmText ?? 'Confirmar'}
-						</button>
-					</div>
-				)}
+					{children}
+
+					{!props.footer?.hidden && (
+						<div data-modal-footer>
+							<button data-modal-cancel onClick={handleCloseClick}>
+								{props.footer?.cancelText ?? 'Cancelar'}
+							</button>
+
+							<button data-modal-confirm onClick={handleConfirmClick} data-type="confirm">
+								{props.footer?.confirmText ?? 'Confirmar'}
+							</button>
+						</div>
+					)}
+				</div>
 			</div>
-		</div>
+		</>
 	);
 };
