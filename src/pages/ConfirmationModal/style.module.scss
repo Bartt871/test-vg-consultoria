@@ -42,19 +42,6 @@ $colors: (
         }
     }
 
-    &.--troll_mode:has(.--confirm:hover),
-    &.--troll_mode:has(.--cancel:hover) {
-        .--cancel {
-            grid-column: 9 / 4 span;
-            order: 2;
-        }
-
-        .--confirm {
-            grid-column: 1 / 4 span;
-            order: 1;
-        }
-    }
-
     & .--cancel {
         grid-column: 1 / 4 span;
     }
