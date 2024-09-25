@@ -1,0 +1,9 @@
+services:
+    react:
+        container_name: nextjs-test-react
+        image: will871/node:dev
+        volumes:
+            - .:/var/www/app
+        ports:
+            - 3000:8080
+        tty: true
