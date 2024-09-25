@@ -11,11 +11,18 @@
  */
 
 import { NextApiRequest, NextApiResponse } from 'next/types';
-
+import { faker } from '@faker-js/faker/locale/pt_BR';
 import { IUser } from '@/types/user.d';
 
 export default (req: NextApiRequest, res: NextApiResponse) => {
-	const users: Array<unknown> = [];
+	if (req.method !== 'GET') {
+		return res.status(405).json({ message: 'Method not allowed' });
+	}
 
-	return res.status(500).json(users);
+	const users: IUser[] = [];
+
+	users.push({ id: users.length + 1, email: faker.internet.email(), name: faker.person.firstName() });
+	users.push({ id: users.length + 1, email: faker.internet.email(), name: faker.person.firstName() });
+
+	return res.status(201).json(users);
 };
