@@ -13,14 +13,11 @@
 import { NextApiRequest, NextApiResponse } from 'next/types';
 
 import { IUser, IUserCreate } from '@/types/user.d';
+import { ApiMethod } from '@/decorators/method';
 
 const users: IUser[] = [];
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-	if (req.method !== 'POST') {
-		return res.status(405).json({ message: 'Method not allowed' });
-	}
-
+export default ApiMethod('POST')(async (req: NextApiRequest, res: NextApiResponse) => {
 	const { name, email } = req.body as IUserCreate;
 
 	if (!name || !email) {
@@ -32,4 +29,4 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	users.push(newUser);
 
 	return res.status(201).json(newUser);
-};
+});

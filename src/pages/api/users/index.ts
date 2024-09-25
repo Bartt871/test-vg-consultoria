@@ -13,16 +13,13 @@
 import { NextApiRequest, NextApiResponse } from 'next/types';
 import { faker } from '@faker-js/faker/locale/pt_BR';
 import { IUser } from '@/types/user.d';
+import { ApiMethod } from '@/decorators/method';
 
-export default (req: NextApiRequest, res: NextApiResponse) => {
-	if (req.method !== 'GET') {
-		return res.status(405).json({ message: 'Method not allowed' });
-	}
-
+export default ApiMethod('GET')(async (req: NextApiRequest, res: NextApiResponse) => {
 	const users: IUser[] = [];
 
 	users.push({ id: users.length + 1, email: faker.internet.email(), name: faker.person.firstName() });
 	users.push({ id: users.length + 1, email: faker.internet.email(), name: faker.person.firstName() });
 
 	return res.status(200).json(users);
-};
+});
