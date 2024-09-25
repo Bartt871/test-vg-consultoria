@@ -9,10 +9,9 @@
  */
 
 import { useState } from 'react';
-import Head from 'next/head';
 
 import styles from '@/styles/modal.module.css';
-import { Modal } from '@/components/Modal';
+import ConfirmationModal from './ConfirmationModal';
 
 export default function Home() {
 	const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -26,6 +25,10 @@ export default function Home() {
 			</main>
 
 			{/* Renderizar modal de confirmação */}
+			<ConfirmationModal
+				modalIsOpen={modalIsOpen}
+				setModalIsOpen={setModalIsOpen}
+			/>
 		</>
 	);
 }
