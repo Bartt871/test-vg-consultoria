@@ -24,5 +24,5 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
 	users.push({ id: users.length + 1, email: faker.internet.email(), name: faker.person.firstName() });
 	users.push({ id: users.length + 1, email: faker.internet.email(), name: faker.person.firstName() });
 
-	return res.status(201).json(users);
+	return res.status(200).json(users);
 };
