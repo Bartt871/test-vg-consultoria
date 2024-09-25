@@ -7,48 +7,21 @@
  * - Disparar as mensagens a partir dos botões abaixo
  */
 
-import { IToastMessage } from '@/types/toast-message';
-import { ToastMessage } from '@/components/ToastMessage';
-
 import styles from '@/styles/context-api.module.css';
+import { useToastMessage } from '@/contexts/ToastMessageProvider/useToastMessage';
 
 export default function ContextApi() {
-	const messages: Array<IToastMessage> = [
-		{
-			id: '1',
-			message: 'Mensagem de sucesso',
-			type: 'success',
-		},
-		{
-			id: '2',
-			message: 'Mensagem de erro',
-			type: 'error',
-		},
-	];
-
-	function handleSuccessButtonClick() {
-		alert('Method: handleSuccessButtonClick not implemented');
-	}
-
-	function handleErrorButtonClick() {
-		alert('Method: handleErrorButtonClick not implemented');
-	}
+	const toastMessage = useToastMessage();
 
 	return (
 		<>
 			<div className={styles.container}>
-				<button type="button" onClick={handleSuccessButtonClick}>
+				<button type="button" onClick={() => toastMessage.notify('success', 'Sucesso', 2)}>
 					Disparar mensagem de sucesso
 				</button>
-				<button type="button" onClick={handleErrorButtonClick}>
+				<button type="button" onClick={() => toastMessage.notify('error', 'Erro')}>
 					Disparar mensagem de erro
 				</button>
-			</div>
-
-			<div className={styles['toast-container']}>
-				{messages.map((message) => (
-					<ToastMessage key={message.id} content={message} />
-				))}
 			</div>
 		</>
 	);

@@ -1,6 +1,8 @@
+export type ToastType = 'success' | 'error';
+
 export interface IToastMessage {
 	id: string;
 	message: string;
-	type: 'success' | 'error';
+	type: ToastType;
 	duration?: number;
 }
