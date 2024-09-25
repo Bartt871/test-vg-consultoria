@@ -50,10 +50,12 @@ const ConfirmationModal = ({
         <div className={styles.custom_footer}>
             <button
                 className={`${styles['--cancel']} ${styles['--danger']}`}
+                onClick={() => setModalIsOpen(false)}
                 children='Cancelar'
             />
             <button
                 className={`${styles['--confirm']} ${styles['--success']}`}
+                onClick={() => setModalIsOpen(false)}
                 children='Confirmar'
             />
         </div>
