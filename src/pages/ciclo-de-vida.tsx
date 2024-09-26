@@ -27,7 +27,7 @@ type CicloDeVidaProps = {
 
 export default function CicloDeVida({ initialCount }: CicloDeVidaProps) {
 	const [showCounter, setShowCounter] = useState(false);
-	const [count, setCount] = useState(0);
+	const [count, setCount] = useState(0); // Tem como realizar a tarefa sem esse state
 
 	function handleOcultCounterClick() {
 		setShowCounter((prevState) => !prevState);
