@@ -34,18 +34,24 @@ export default function CicloDeVida({ initialCount }: CicloDeVidaProps) {
 	}
 
 	useEffect(() => {
-		window.addEventListener('onCounterMount', (event: CustomEventInit) => {
-			console.log('onCounterMount');
-		});
+		const handleCounterMount = () => console.log('onCounterMount');
+		const handleCounterUnmount = () => console.log('onCounterUnmount');
+		const handleCounterUpdate = (event: CustomEventInit) => setCount(event.detail.count);
 
-		window.addEventListener('onCounterUnmount', (event: CustomEventInit) => {
-			console.log('onCounterUnmount');
-		});
+		window.addEventListener('onCounterMount', handleCounterMount);
+		window.addEventListener('onCounterUnmount', handleCounterUnmount);
+		window.addEventListener('onCounterUpdate', handleCounterUpdate);
 
-		window.addEventListener('onCounterUpdate', (event: CustomEventInit) => {
-			console.log('onCounterUpdate');
-		});
+		return () => {
+			window.removeEventListener('onCounterMount', handleCounterMount);
+			window.removeEventListener('onCounterUnmount', handleCounterUnmount);
+			window.removeEventListener('onCounterUpdate', handleCounterUpdate);
+		};
 	}, []);
+
+	useEffect(() => {
+		count >= 10 && setShowCounter(false);
+	}, [count]);
 
 	return (
 		<div className={styles.container}>
